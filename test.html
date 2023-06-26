@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>DOM操作入門</title>
+  </head>
+  <body>
+    <form>
+      <input type="text" name="" id="name">
+      <input value="追加" id="btn">
+    </form>
+    <h3>TODOリスト</h3>
+    <ul id="lists"></ul>
+    <button type="button" id="deleteButton">削除する</button>
+    <script>
+      const lists = document.getElementById('lists'); //listsと13行目で定義したIDのオブジェクトを定数listsと定義(IDと定数名は別)
+      const ppparget = document.getElementById('btn'); //IDがbtnの追加ボタンが押された時のイベントを定数pppargetと定義
+      ppparget.addEventListener('click', function() { //以下pppargetの内容
+        const form = document.getElementById('name'); //'name'で記入された内容を定数formと定義
+        // if (form.value == ""){
+        //   window.alert('TODOを入力してください');
+        // }
+        // else{
+          const list = document.createElement('li'); //liタグを作る。listと定義
+          list.textContent = form.value; //form.value、つまり入力内容を設定。liタグ内のテキストを指している
+          list.addEventListener('click', function(e){
+            const doneList = e.target; //ここのtargetは17行目のpppargetとは全く別！（テキストだとtargetになってる）
+                                       //こっちはイベントオブジェクトのtargetを指してる
+            doneList.style.textDecoration = 'line-through';
+            doneList.style.color = 'gray';
+            doneList.style.fontStyle = 'italic';
+          }, false);
+          lists.appendChild(list); //フォームの入力内容が設定されたliタグの情報をulダグの下に追加
+          form.value = ""; //フォーム内容をリセット（空文字の上書き）
+        }
+        //}
+        ,false); 
+
+      const deleteButton = document.getElementById('deleteButton'); //14行目の'deleteButton'のIDを指している
+      deleteButton.addEventListener('click',function(){
+        while(lists.firstChild){
+          lists.removeChild(lists.firstChild);
+        }
+      },false);
+    </script>
+  </body>
+</html>
