@@ -1,4 +1,4 @@
-function get_achievement(){  //ここは戻り値が返ってくるので()は空欄
+function get_achievement(points){  //ここのpointsは変数ではなく引数である！
   let sum = 0;
   for(let i = 0; i < number; i++){
     sum += points[i];
@@ -14,7 +14,7 @@ function get_achievement(){  //ここは戻り値が返ってくるので()は�
     }
 }
 
-function get_pass_or_failure(){
+function get_pass_or_failure(points){
   let judge = "合格";
     for(let i=0; i < number; i++){
       if (points[i] < 60){
@@ -25,13 +25,13 @@ function get_pass_or_failure(){
     return judge; //これがないとundefinedになる
 }
 
-function judgement(){
-  let achievement = get_achievement() //関数の戻り値
-  let pass_or_failure =  get_pass_or_failure()  //関数の戻り値
+function judgement(points){
+  let achievement = get_achievement(points) //関数の戻り値
+  let pass_or_failure =  get_pass_or_failure(points)  //関数の戻り値
   return `あなたの成績は${achievement}です。${pass_or_failure}です!`;
 }
 
-let points = [90, 69, 60, 60, 60]; //ここの変数がグローバル変数であることに注意
-let number = points.length;
+let numberValues = [90, 69, 60, 60, 60]; //ここの変数がグローバル変数であることに注意
+let number = numberValues.length;
 
-console.log(judgement(points));
+console.log(judgement(numberValues));
