@@ -1,19 +1,41 @@
 class School
-  # nameというインスタンスメソッドを定義する
-  def name
-    @greeting = "Hello!"
-  end
+  attr_accessor :name,
+                :address,
+                :number_of_students,
+                :founding_years,
+                :introduction_video_url,
+                :introduction_statement
 
-  def name1
-    #　インスタンス変数@greetingは、使用できる
-    puts @greeting
+  def initialize(name, address, number_of_students,founding_years,
+                 introduction_video_url, introduction_statement)
+    @name = name
+    @address = address
+    @number_of_students = number_of_students
+    @founding_years = founding_years
+    @introduction_video_url = introduction_video_url
+    @introduction_statement = introduction_statement
   end
 end
 
-school = School.new
+class School
 
-# @greeting="Hello!"と定義する
-school.name
+  def sample_instance_method
+    puts "sampleだよ！"
+  end
+end
 
-# @greetingの中身を表示する
-school.name1
+# A学校用のインスタンスを作成
+# a_school = School.new("A学校", "東京都渋谷区..", 300, 100, "https://hoge.com", "A学校は自然豊かな...")
+# puts a_school.name
+# puts a_school.address
+# puts a_school.number_of_students
+# puts a_school.founding_years
+# puts a_school.introduction_video_url
+# puts a_school.introduction_statement
+
+# puts a_school.instance_variables
+
+
+a_school = School.new("A学校", "東京都渋谷区..", 300, 100, "https://hoge.com", "A学校は自然豊かな...")
+
+a_school.sample_instance_method
